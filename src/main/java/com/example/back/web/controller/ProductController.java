@@ -13,13 +13,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+
 @RestController
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 60)
 public class ProductController {
 
     @Autowired
     ProductDao productDao;
 
-    @CrossOrigin(origins = "http://localhost:4200", maxAge = 60)
+
     @GetMapping(value = "/products")
     public List<Product> findAll() {
 
@@ -31,7 +33,7 @@ public class ProductController {
 
     }
 
-    @CrossOrigin(origins = "http://localhost:4200", maxAge = 60)
+
     @GetMapping(value = "/products/{id}")
     public Optional<Product> findById(@PathVariable int id) {
 
@@ -43,7 +45,7 @@ public class ProductController {
         return product;
     }
 
-    @CrossOrigin(origins = "http://localhost:4200", maxAge = 60)
+
     @PostMapping(value = "/products")
     public ResponseEntity<Product> add(@RequestBody Product product){
 
